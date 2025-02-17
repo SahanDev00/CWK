@@ -13,25 +13,33 @@ const Deals = () => {
     dots: true, // Add navigation dots
     infinite: true,
     speed: 1000,
+    autoplay: true,
     autoplaySpeed: 3000,
-    slidesToShow: 5, // Number of slides to show at once
+    slidesToShow: 4, // Number of slides to show at once
     slidesToScroll: 3, // Number of slides to scroll at a time
     pauseOnHover: true,
+    centerMode: true, // Enables partial visibility and spacing
+    centerPadding: "20px", // Adjust space between slides
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 1,
+          centerPadding: "10px",
         },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
+          centerPadding: "5px",
         },
       },
     ],
   };
+  
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -55,10 +63,10 @@ const Deals = () => {
   }, []);
 
   return (
-    <div className='w-full h-[350px] mt-5'>
+    <div className='w-full mt-5 mb-[300px]'>
       <div className='w-[80%] mx-auto relative'>
         <div className='bg-yellow w-full h-[200px] rounded-t-[80px]'>
-          <h1 className='text-white text-2xl font-bold text-center pt-5'>Super Deals</h1>
+          <h1 className='text-white text-3xl font-bold text-center pt-5 font-overpass'>Super Deals</h1>
         </div>
 
         {/* Show loading or error states */}
@@ -74,22 +82,24 @@ const Deals = () => {
           <div className='absolute w-full h-full inset-0 top-1/3 p-5'>
             {/* Slider for items */}
             <Slider {...settings}>
-              {items.map((item) => (
-                <div className='w-full h-full p-4 bg-gray/80 rounded-lg shadow-lg'>
-                  {/* Image */}
-                  <div className="w-full h-[200px] bg-gray mb-4">
-                    <img
-                      src={`https://admincwk.worldpos.biz/Uploads/${item.itemID}`}
-                      alt={item.itemName}
-                      className="w-full h-full object-cover"
-                    />
+              {items.map((item, index) => (
+                <div key={index} className='w-full h-full px-2'> {/* Add horizontal padding for spacing */}
+                  <div className='w-full h-full p-5 rounded-tr-[50px] rounded-bl-[50px] shadow-lg bg-white mb-5'>
+                    {/* Image */}
+                    <div className="w-full h-[200px] mb-4 rounded-tr-[50px] rounded-bl-[50px]">
+                      <img
+                        src={`https://admincwk.worldpos.biz/Uploads/${item.itemID}.png`}
+                        alt={item.itemName}
+                        className="w-full h-full object-cover rounded-tr-[45px] rounded-bl-[45px]"
+                      />
+                    </div>
+                    {/* Item Info */}
+                    <p className='text-lg font-semibold font-karla'>{item.itemName}</p>
+                    <p className='mt-1 text-lg font-bold text-green font-karla'>Rs. {item.retailPrice}</p>
+                    <button className='mt-4 w-full py-2 rounded-tr-[45px] rounded-bl-[45px] font-poppins bg-amber/80 hover:bg-amber text-white rounded-md'>
+                      Add to Cart
+                    </button>
                   </div>
-                  {/* Item Info */}
-                  <p className='text-lg font-semibold'>{item.itemName}</p>
-                  <p className='mt-1 text-lg font-bold text-green'>Rs. {item.retailPrice}</p>
-                  <button className='mt-4 w-full py-2 bg-blue text-white rounded-md'>
-                    Add to Cart
-                  </button>
                 </div>
               ))}
             </Slider>
