@@ -48,7 +48,7 @@ const Navbar = () => {
     }
 
   return (
-    <div className='w-full bg-red h-[130px] fixed z-50'>
+    <div className='w-full bg-yellow h-[130px] fixed z-50'>
         <div className='w-full h-[40px] bg-black'>
             <div className='w-[80%] mx-auto grid grid-cols-2 h-full'>
                 <div className='w-full'/>

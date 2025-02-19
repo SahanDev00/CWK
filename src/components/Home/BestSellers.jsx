@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Deals = () => {
+const BestSellers = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state for API
   const [error, setError] = useState(null); // Error state for API
@@ -63,10 +63,12 @@ const Deals = () => {
   }, []);
 
   return (
-    <div className='w-full mt-[80px] mb-[300px]'>
-      <div className='w-[80%] mx-auto relative'>
-        <div className='bg-yellow w-full h-[200px] rounded-t-[80px]'>
-          <h1 className='text-white text-3xl font-bold text-center pt-5 font-overpass'>Super Deals</h1>
+    <div className='w-full mt-[350px] mb-[300px]'>
+      <div className='w-[80%] mx-auto'>
+        <div className='flex justify-between items-center'>
+            <div className='w-full bg-black h-[1px]'/>
+            <h1 className='text-black/80 w-full text-3xl text-center pt-5 font-overpass'>Best <span className='font-bold'>Sellers</span></h1>
+            <div className='w-full bg-black h-[1px]'/>
         </div>
 
         {/* Show loading or error states */}
@@ -79,7 +81,7 @@ const Deals = () => {
             <p className="text-xl text-red">{error}</p>
           </div>
         ) : (
-          <div className='absolute w-full h-full inset-0 top-1/3 p-5'>
+          <div className='w-full h-full inset-0 top-1/3 p-5 mt-5'>
             {/* Slider for items */}
             <Slider {...settings}>
               {items.map((item, index) => (
@@ -110,4 +112,4 @@ const Deals = () => {
   );
 };
 
-export default Deals;
+export default BestSellers;
