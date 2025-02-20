@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaAngleDown, FaAngleRight, FaCartArrowDown, FaPhoneAlt } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { RiLoginBoxFill } from 'react-icons/ri'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -13,6 +13,11 @@ const Navbar = () => {
     const [activeCategoryID, setActiveCategoryID] = useState(null); // Track the active category ID
     const [searchQuery, setSearchQuery] = useState('');
     const Navigate = useNavigate()
+    const location = useLocation();
+
+    const isActive = (path) => {
+        return location.pathname === path;
+      };
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -83,16 +88,16 @@ const Navbar = () => {
                 </div>
                 <div className='flex w-full h-full items-center justify-center gap-4 text-white font-karla'>
                     <Link to='/'>
-                        <p className='hover:font-medium cursor-pointer'>Home</p>
+                        <p className={`hover:font-medium cursor-pointer ${isActive('/') && ' border-b scale-105'}`}>Home</p>
                     </Link>
                     <Link to='/all-products'>
-                        <p className='hover:font-medium cursor-pointer'>All Products</p>
+                        <p className={`hover:font-medium cursor-pointer ${isActive('/all-products') && ' border-b scale-105'}`}>All Products</p>
                     </Link>
                     <Link to='/new-products'>
-                        <p className='hover:font-medium cursor-pointer'>New Products</p>
+                        <p className={`hover:font-medium cursor-pointer ${isActive('/new-products') && ' border-b scale-105'}`}>New Products</p>
                     </Link>
                     <Link to='/promotions'>
-                        <p className='hover:font-medium cursor-pointer'>Promotions</p>
+                        <p className={`hover:font-medium cursor-pointer ${isActive('/promotions') && ' border-b scale-105'}`}>Promotions</p>
                     </Link>
                 </div>
                 <div className='flex w-full h-full items-center justify-end gap-6'>

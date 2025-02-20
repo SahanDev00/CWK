@@ -90,7 +90,7 @@ const Promotions = () => {
                             <div className='w-full h-[220px] flex flex-col items-center justify-center'>
                                 <p className='text-lg font-semibold font-karla'>{item.itemName}</p>
                                 <p className='text-green font-poppins'>Rs. {item.retailPrice}</p>
-                                <button className='w-[90%] mx-auto rounded-tr-3xl rounded-bl-3xl my-2 py-1 shadow hover:bg-yellow hover:text-white hover:shadow-lg duration-200'>Add to cart</button>
+                                <button className='w-[90%] font-roboto mx-auto rounded-tr-3xl rounded-bl-3xl my-2 py-1 shadow hover:bg-yellow hover:text-white hover:shadow-lg duration-200'>Add to cart</button>
                             </div>
                         </div>
                     )) : (
