@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaAngleDown, FaAngleRight, FaCartArrowDown, FaPhoneAlt } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { RiLoginBoxFill } from 'react-icons/ri'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -10,6 +11,8 @@ const Navbar = () => {
     const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
     const [activeCategoryID, setActiveCategoryID] = useState(null); // Track the active category ID
+    const [searchQuery, setSearchQuery] = useState('');
+    const Navigate = useNavigate()
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -47,6 +50,13 @@ const Navbar = () => {
         }
     }
 
+    const handleSearch = () => {
+        if (searchQuery.trim()) {
+            Navigate(`/products/Search/${searchQuery.trim()}`);
+            setSearchQuery('')
+        }
+    };
+
   return (
     <div className='w-full bg-yellow h-[130px] fixed z-50'>
         <div className='w-full h-[40px] bg-black'>
@@ -72,11 +82,18 @@ const Navbar = () => {
                     <p className='text-5xl w-[130px] text-center text-white font-bold font-karla'>CWK</p>
                 </div>
                 <div className='flex w-full h-full items-center justify-center gap-4 text-white font-karla'>
-                    <p className='hover:font-medium cursor-pointer'>Home</p>
-                    <p className='hover:font-medium cursor-pointer'>All Products</p>
-                    <p className='hover:font-medium cursor-pointer'>Promotions</p>
-                    <p className='hover:font-medium cursor-pointer'>Snacks</p>
-                    <p className='hover:font-medium cursor-pointer'>Vegetables</p>
+                    <Link to='/'>
+                        <p className='hover:font-medium cursor-pointer'>Home</p>
+                    </Link>
+                    <Link to='/all-products'>
+                        <p className='hover:font-medium cursor-pointer'>All Products</p>
+                    </Link>
+                    <Link to='/new-products'>
+                        <p className='hover:font-medium cursor-pointer'>New Products</p>
+                    </Link>
+                    <Link to='/promotions'>
+                        <p className='hover:font-medium cursor-pointer'>Promotions</p>
+                    </Link>
                 </div>
                 <div className='flex w-full h-full items-center justify-end gap-6'>
                     <div className='flex gap-2 justify-center items-center h-full relative'>
@@ -94,8 +111,13 @@ const Navbar = () => {
                     <FaAngleDown />
                 </div>
                 <div className='w-full rounded-tr-3xl flex'>
-                    <input type="text" className='w-full h-full focus:outline-none pl-5' />
-                    <button className='w-[200px] h-full bg-amber rounded-tr-3xl rounded-bl-3xl font-medium text-white'>Search</button>
+                    <input type="text" className='w-full h-full focus:outline-none pl-5'
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()} // Handle Enter key press
+                     />
+
+                    <button className='w-[200px] h-full bg-amber rounded-tr-3xl rounded-bl-3xl font-medium text-white' onClick={handleSearch}>Search</button>
                 </div>
                 {isCategoriesOpen && (
                     <div className='w-[80%] absolute mt-[55px] border bg-white border-gray/50 left-0 right-0 rounded-tr-3xl rounded-bl-3xl shadow-2xl p-4 min-h-[300px] max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray/80 scrollbar-track-gray/0'>
@@ -117,7 +139,9 @@ const Navbar = () => {
                                             <div key={subCategory.categorySubID} className='w-full'>
                                                 <div className='flex justify-between w-full items-center cursor-pointer hover:bg-gray/10'>
                                                     {subCategory.categorySubName ? (
-                                                        <p className='font-karla pb-3 pt-2 text-sm pl-2 w-[400px]'>{subCategory.categorySubName}</p>
+                                                        <Link to={`/products/${subCategory.categorySubID}`} onClick={() => setIsCategoriesOpen(false)}>
+                                                            <p className='font-karla pb-3 pt-2 text-sm pl-2 w-[400px]'>{subCategory.categorySubName}</p>
+                                                        </Link>
                                                     ) : (
                                                         <p className='font-karla pb-3 pt-2 text-sm pl-2 w-[400px]'>No Items Available</p>
                                                     )}

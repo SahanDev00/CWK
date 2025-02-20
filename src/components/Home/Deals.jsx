@@ -14,8 +14,8 @@ const Deals = () => {
     infinite: true,
     speed: 1000,
     autoplay: true,
-    autoplaySpeed: 3000,
-    slidesToShow: 4, // Number of slides to show at once
+    autoplaySpeed: 4000,
+    slidesToShow: 5, // Number of slides to show at once
     slidesToScroll: 3, // Number of slides to scroll at a time
     pauseOnHover: true,
     centerMode: true, // Enables partial visibility and spacing
@@ -64,8 +64,8 @@ const Deals = () => {
 
   return (
     <div className='w-full mt-[80px] mb-[300px]'>
-      <div className='w-[80%] mx-auto relative'>
-        <div className='bg-yellow w-full h-[200px] rounded-t-[80px]'>
+      <div className='w-[90%] mx-auto relative'>
+        <div className='bg-yellow w-full h-[200px] rounded-br-[50px] rounded-tl-[50px]'>
           <h1 className='text-white text-3xl font-bold text-center pt-5 font-overpass'>Super Deals</h1>
         </div>
 
@@ -84,7 +84,7 @@ const Deals = () => {
             <Slider {...settings}>
               {items.map((item, index) => (
                 <div key={index} className='w-full h-full px-2'> {/* Add horizontal padding for spacing */}
-                  <div className='w-full h-full p-5 rounded-tr-[50px] rounded-bl-[50px] shadow-lg bg-white mb-5'>
+                  <div className='w-full h-full p-5 rounded-tr-[50px] rounded-bl-[50px] shadow-sm hover:shadow-lg bg-white mb-5'>
                     {/* Image */}
                     <div className="w-full h-[200px] mb-4 rounded-tr-[50px] rounded-bl-[50px]">
                       <img

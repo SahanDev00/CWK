@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const BestSellers = () => {
+const FeaturedProducts = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state for API
   const [error, setError] = useState(null); // Error state for API
@@ -46,7 +46,7 @@ const BestSellers = () => {
       try {
         const apiKey = process.env.REACT_APP_API_KEY;
         const apiUrl = process.env.REACT_APP_API_URL;
-        const response = await axios.get(`${apiUrl}/Item?IsNew=y`, {
+        const response = await axios.get(`${apiUrl}/Item?IsFeatured=y`, {
           headers: {
             'APIKey': apiKey,
           },
@@ -63,11 +63,11 @@ const BestSellers = () => {
   }, []);
 
   return (
-    <div className='w-full mt-[350px]'>
+    <div className='w-full'>
       <div className='w-[95%] mx-auto'>
         <div className='flex justify-between items-center'>
             <div className='w-full bg-black/30 h-[1px]'/>
-            <h1 className='text-black/80 w-full text-3xl text-center pt-5 font-overpass'>Best <span className='font-bold'>Sellers</span></h1>
+            <h1 className='text-black/80 w-full text-3xl text-center pt-5 font-overpass'>Featured <span className='font-bold'>Items</span></h1>
             <div className='w-full bg-black/30 h-[1px]'/>
         </div>
 
@@ -112,4 +112,4 @@ const BestSellers = () => {
   );
 };
 
-export default BestSellers;
+export default FeaturedProducts;
