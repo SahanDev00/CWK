@@ -4,11 +4,14 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+import { useCart } from '../Cart/CartContext';
+import { toast } from 'react-toastify';
 
 const BestSellers = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state for API
   const [error, setError] = useState(null); // Error state for API
+  const { addToCart } = useCart();
 
   const settings = {
     dots: true, // Add navigation dots
@@ -63,6 +66,18 @@ const BestSellers = () => {
     fetchItems();
   }, []);
 
+  const handleAddToCart = (item) => {
+    addToCart({
+      ...item,
+      quantity: 1,
+    });
+    toast.success(item.itemName + ' Added To The Cart!', {
+      toastId: 1,
+      position: "top-right",
+      autoClose: 2000,
+    });
+  };
+
   return (
     <div className='w-full mt-[350px]'>
       <div className='w-[95%] mx-auto'>
@@ -99,7 +114,13 @@ const BestSellers = () => {
                     {/* Item Info */}
                     <p className='text-lg font-semibold font-karla'>{item.itemName}</p>
                     <p className='mt-1 text-lg font-bold text-green font-karla'>Rs. {item.retailPrice}</p>
-                    <button className='mt-4 w-full py-2 rounded-tr-[45px] rounded-bl-[45px] font-poppins bg-amber/80 hover:bg-amber text-white rounded-md'>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevents navigation
+                        e.stopPropagation(); // Stops event bubbling to the Link
+                        handleAddToCart(item);
+                      }}
+                      className='mt-4 w-full py-2 rounded-tr-[45px] rounded-bl-[45px] font-poppins bg-amber/80 hover:bg-amber text-white rounded-md'>
                       Add to Cart
                     </button>
                   </div>
