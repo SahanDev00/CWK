@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
 
 const BestSellers = () => {
   const [items, setItems] = useState([]);
@@ -85,7 +86,7 @@ const BestSellers = () => {
             {/* Slider for items */}
             <Slider {...settings}>
               {items.map((item, index) => (
-                <div key={index} className='w-full h-full px-2'> {/* Add horizontal padding for spacing */}
+                <Link to={`/product/${item.itemID}`} key={index} className='w-full h-full px-2'> {/* Add horizontal padding for spacing */}
                   <div className='w-full h-full p-5 rounded-tr-[50px] rounded-bl-[50px] shadow-sm hover:shadow-lg bg-white mb-5'>
                     {/* Image */}
                     <div className="w-full h-[200px] mb-4 rounded-tr-[50px] rounded-bl-[50px]">
@@ -102,7 +103,7 @@ const BestSellers = () => {
                       Add to Cart
                     </button>
                   </div>
-                </div>
+                </Link>
               ))}
             </Slider>
           </div>

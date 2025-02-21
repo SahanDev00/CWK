@@ -1,12 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { FaAngleDown, FaAngleRight, FaCartArrowDown, FaPhoneAlt } from 'react-icons/fa'
+import { FaAngleDown, FaAngleRight, FaCartArrowDown, FaPhoneAlt, FaUser } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { RiLoginBoxFill } from 'react-icons/ri'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie';
+import { useCart } from '../Cart/CartContext';
 
 const Navbar = () => {
 
+    const customerId = Cookies.get('customerId') || sessionStorage.getItem('customerId');
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
     const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
@@ -14,6 +17,7 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const Navigate = useNavigate()
     const location = useLocation();
+    const { getTotalItems, calculateTotal } = useCart();
 
     const isActive = (path) => {
         return location.pathname === path;
@@ -76,10 +80,21 @@ const Navbar = () => {
                         <FaPhoneAlt className='text-lg group-hover:text-yellow'/>
                         <p className='text-sm group-hover:text-yellow font-poppins'>+94 71 265 2654 | </p>
                     </div>
-                    <div className='flex gap-1 items-center h-full justify-center group cursor-pointer'>
-                        <RiLoginBoxFill className='text-lg group-hover:text-yellow'/>
-                        <p className='text-sm group-hover:text-yellow font-poppins'>Sign Up | Sign In</p>
-                    </div>
+                    {!customerId ? (
+                        <Link to='/sign-up'>
+                            <div className='flex gap-1 items-center h-full justify-center group cursor-pointer'>
+                                <RiLoginBoxFill className={`text-lg group-hover:text-yellow ${isActive('/sign-up') && 'text-yellow' }`}/>
+                                <p className={`text-sm group-hover:text-yellow font-poppins ${isActive('/sign-up') && 'text-yellow' }`}>Sign Up | Sign In</p>
+                            </div>
+                        </Link>
+                    ) : (
+                        <Link to='/my-profile'>
+                            <div className='flex gap-2 items-center h-full justify-center group cursor-pointer'>
+                                <FaUser className={`text-lg group-hover:text-yellow ${isActive('/my-profile') && 'text-yellow' }`}/>
+                                <p className={`text-sm group-hover:text-yellow font-poppins ${isActive('/my-profile') && 'text-yellow' }`}>My Profile</p>
+                            </div>
+                        </Link>
+                    )}
                 </div>
             </div>
             <div className='w-[80%] mx-auto flex justify-between items-center pt-1 h-[60px]'>
@@ -101,12 +116,14 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className='flex w-full h-full items-center justify-end gap-6'>
-                    <div className='flex gap-2 justify-center items-center h-full relative'>
+                    <Link to='/cart' className='flex gap-2 justify-center items-center h-full relative'>
                         <FaCartArrowDown className='text-white text-lg'/>
-                        <p className='absolute top-2 -right-3 bg-green rounded-full px-1 text-white text-sm'>0</p>
-                    </div>
+                        {getTotalItems() > 0 && (
+                            <p className='absolute top-2 -right-3 bg-green rounded-full px-1 text-white text-sm'>{getTotalItems()}</p>
+                        )}
+                    </Link>
                     <div className='flex gap-2 justify-center items-center h-full'>
-                        <p className='text-white font-semibold'>Rs. 0.00</p>
+                        <p className='text-white font-semibold'>Rs. {calculateTotal()}</p>
                     </div>
                 </div>
             </div>
