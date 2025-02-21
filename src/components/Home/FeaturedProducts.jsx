@@ -79,12 +79,12 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <div className='w-full'>
+    <div className='w-full mt-10'>
       <div className='w-[95%] mx-auto'>
         <div className='flex justify-between items-center'>
-            <div className='w-full bg-black/30 h-[1px]'/>
+            <div className='w-[70%] sm:w-full bg-black/30 h-[1px]'/>
             <h1 className='text-black/80 w-full text-3xl text-center pt-5 font-overpass'>Featured <span className='font-bold'>Items</span></h1>
-            <div className='w-full bg-black/30 h-[1px]'/>
+            <div className='w-[70%] sm:w-full bg-black/30 h-[1px]'/>
         </div>
 
         {/* Show loading or error states */}

@@ -83,11 +83,11 @@ const Promotions = () => {
 
   return (
     <div className='w-full min-h-screen pt-28'>
-        <img src="https://wellingtoncitymission.org.nz/wp-content/uploads/2021/03/Social-supermarket-WB-Banner-EDIT.png" className='w-full h-[250px] object-cover' alt="" />
-        <div className='flex w-[90%] mx-auto mt-10'>
+        <img src="https://wellingtoncitymission.org.nz/wp-content/uploads/2021/03/Social-supermarket-WB-Banner-EDIT.png" className='w-full h-[150px] md:h-[250px] object-cover' alt="" />
+        <div className='flex w-[90%] mx-auto mt-10 flex-col md:flex-row'>
 
             {/* Side bar */}
-            <div className='w-[400px] h-[500px] p-4'>
+            <div className='w-full md:w-[400px] h-auto md:h-[500px] p-4'>
                 <h1 className='text-lg font-overpass'>Shop by <span className='font-bold'>Category</span></h1>
                 <hr className='opacity-50 mt-2' />
                 <div className='w-full h-full overflow-y-auto mt-5'>
@@ -101,7 +101,7 @@ const Promotions = () => {
             </div>
 
             {/* Items */}
-            <div className='w-full grid grid-cols-4 ml-5 gap-5'>
+            <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-5 md:mt-0'>
                 {items.length > 0 ? 
                     items.map((item) => (
                         <Link to={`/product/${item.itemID}`} className='w-full h-[400px] p-3 flex flex-col shadow-sm hover:shadow-lg duration-200 rounded-tr-[40px] rounded-bl-[40px]'>

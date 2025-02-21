@@ -58,30 +58,30 @@ const Hero = () => {
         <div className='w-full h-[80vh] overflow-hidden'>
             <Slider {...settings}>
                 {banners.map((banner) => (
-                    <div className='w-full h-full'>
+                    <div className='w-full h-[80vh] lg:h-full'>
                         <Link to={banner.buttonLink}>
-                            <img className='w-full h-full' src={`https://admincwk.worldpos.biz/Uploads/${banner.slideBannerID}.jpg`} alt="" />
+                            <img className='w-full h-[80vh] lg:h-full object-cover' src={`https://admincwk.worldpos.biz/Uploads/${banner.slideBannerID}.jpg`} alt="" />
                         </Link>
                     </div>
                 ))}
             </Slider>
         </div>
-        <div className='w-[50%] mx-auto h-[60px] flex items-center justify-between'>
+        <div className='w-[90%] xl:w-[70%] 2xl:w-[50%] mx-auto h-[80px] md:h-[90px] lg:h-[60px] grid grid-cols-2 lg:grid-cols-4 items-center justify-between'>
             <div className='flex gap-2 items-center justify-center'>
-                <CiDeliveryTruck className='text-green text-3xl'/>
-                <p className='text-sm font-poppins'>Lorem, ipsum dolor.</p>
+                <CiDeliveryTruck className='text-green text-2xl md:text-3xl'/>
+                <p className='text-[12px] md:text-sm font-poppins'>Lorem, ipsum dolor.</p>
             </div>
             <div className='flex gap-2 items-center justify-center'>
-                <CiDeliveryTruck className='text-green text-3xl'/>
-                <p className='text-sm font-poppins'>Lorem, ipsum dolor.</p>
+                <CiDeliveryTruck className='text-green text-2xl md:text-3xl'/>
+                <p className='text-[12px] md:text-sm font-poppins'>Lorem, ipsum dolor.</p>
             </div>
             <div className='flex gap-2 items-center justify-center'>
-                <CiDeliveryTruck className='text-green text-3xl'/>
-                <p className='text-sm font-poppins'>Lorem, ipsum dolor.</p>
+                <CiDeliveryTruck className='text-green text-2xl md:text-3xl'/>
+                <p className='text-[12px] md:text-sm font-poppins'>Lorem, ipsum dolor.</p>
             </div>
             <div className='flex gap-2 items-center justify-center'>
-                <CiDeliveryTruck className='text-green text-3xl'/>
-                <p className='text-sm font-poppins'>Lorem, ipsum dolor.</p>
+                <CiDeliveryTruck className='text-green text-2xl md:text-3xl'/>
+                <p className='text-[12px] md:text-sm font-poppins'>Lorem, ipsum dolor.</p>
             </div>
         </div>
     </div>
