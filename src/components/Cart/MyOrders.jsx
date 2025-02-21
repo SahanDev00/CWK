@@ -46,7 +46,7 @@ const MyOrders = () => {
   }
 
   return (
-    <div className='w-full md:min-h-[700px] lg:min-h-[650px] xl:min-h-[700px] 2xl:min-h-[800px] mx-auto px-4 py-8 mb-5 pt-24 bg-white'>
+    <div className='w-full md:min-h-[700px] lg:min-h-[650px] xl:min-h-[700px] 2xl:min-h-[800px] mx-auto px-4 py-8 mb-5 pt-36 bg-white'>
       <h1 className='text-2xl font-bold mb-5 text-black/70 font-poppins text-center pt-5'>Track My Orders</h1>
       <div className='overflow-x-auto w-[95%] md:w-[90%] mx-auto'>
         <table className='min-w-full text-black/60 border border-black/60'>

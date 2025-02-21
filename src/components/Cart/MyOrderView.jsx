@@ -12,7 +12,7 @@ const MyOrderView = ({ viewOrder, onClose }) => {
         const fetchOrderDetails = async () => {
             const apiKey = process.env.REACT_APP_API_KEY;
             try {
-                const response = await axios.get(`https://adminacwk.worldpos.biz/Api/OrderItem?OrderID=${viewOrder.orderID}`, {
+                const response = await axios.get(`https://admincwk.worldpos.biz/Api/OrderItem?OrderID=${viewOrder.orderID}`, {
                     headers: {
                         'APIKey': apiKey
                     }
@@ -76,7 +76,7 @@ const MyOrderView = ({ viewOrder, onClose }) => {
                     {orderItem ? (
                         <tr key={orderItem.orderItemID}>
                             <td className='px-4 py-2 border-b border-gray'>
-                            <img className='w-[60px] inline-block mr-5' src={`http://admincwk.worldpos.biz/Uploads/${orderItem.itemID}.jpg`} alt={orderItem.itemName} />
+                            <img className='w-[60px] inline-block mr-5' src={`http://admincwk.worldpos.biz/Uploads/${orderItem.itemID}.png`} alt={orderItem.itemName} />
                             {orderItem.itemName}
                             </td>
                             <td className='px-4 py-2 border-b border-gray text-center'>{orderItem.itemQty}</td>

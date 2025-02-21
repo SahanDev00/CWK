@@ -49,7 +49,7 @@ const Checkout = () => {
     if (customerId) {
       // Fetch profile data from API
       const fetchProfileData = async () => {
-        const apiURL = `https://adminaliyaumbrella.worldpos.biz/api/Customer`; // Adjust with dynamic ID as necessary
+        const apiURL = `https://admincwk.worldpos.biz/api/Customer`; // Adjust with dynamic ID as necessary
 
         try {
           const apiKey = process.env.REACT_APP_API_KEY;
@@ -107,7 +107,7 @@ const Checkout = () => {
     };
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
-      const response = await fetch('https://adminaliyaumbrella.worldpos.biz/Api/Order', {
+      const response = await fetch('https://admincwk.worldpos.biz/Api/Order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ const Checkout = () => {
             lineTotalDisplay: (parseFloat(item.retailPrice) * parseInt(item.quantity, 10)).toFixed(2)
           };
                     // Send each item to the OrderItem API
-                    const orderItemResponse = await fetch('https://adminaliyaumbrella.worldpos.biz/Api/OrderItem', {
+                    const orderItemResponse = await fetch('https://admincwk.worldpos.biz/Api/OrderItem', {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json',
