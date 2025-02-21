@@ -123,7 +123,7 @@ const ProductDescription = () => {
               e.stopPropagation(); // Stops event bubbling to the Link
               handleAddToCart(item);
             }}
-            className="flex items-center gap-2 px-6 py-2 bg-yellow/80 text-black hover:text-white font-medium rounded-lg shadow-md hover:bg-yellow transition">
+            className="flex items-center gap-2 px-6 py-2 bg-yellow/80 text-black hover:text-white font-medium rounded-tr-2xl rounded-bl-2xl shadow-md hover:bg-yellow transition">
             <FaShoppingCart />
             Add to Cart
           </button>

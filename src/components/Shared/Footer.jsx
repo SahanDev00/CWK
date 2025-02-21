@@ -17,7 +17,7 @@ const Footer = () => {
             <div className='flex items-center w-full md:w-auto mt-4 md:mt-0'>
                 <input 
                   className='w-full md:w-[400px] lg:w-[500px] xl:w-[650px] 2xl:w-[1100px] h-[50px] rounded-bl-2xl pl-4 outline-none focus:border border-amber text-sm' 
-                  type="text" 
+                  type="email" 
                   placeholder='Enter your email to subscribe...'
                 />
                 <button className='bg-yellow px-4 md:px-6 text-sm h-[50px] rounded-tr-2xl text-white font-poppins md:w-auto md:mt-0'>Submit</button>
