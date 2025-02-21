@@ -13,6 +13,10 @@ const NewProducts = () => {
     const { addToCart } = useCart();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
+    useEffect(() => {
         const fetchCategories = async () => {
             try {
                 const apiKey = process.env.REACT_APP_API_KEY;

@@ -78,6 +78,10 @@ const SearchedProducts = () => {
         });
       };
 
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
   return (
     <div className='w-full min-h-screen pt-28'>
         <img src="https://wellingtoncitymission.org.nz/wp-content/uploads/2021/03/Social-supermarket-WB-Banner-EDIT.png" className='w-full h-[250px] object-cover' alt="" />

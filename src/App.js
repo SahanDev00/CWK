@@ -12,8 +12,8 @@ import MyProfile from "./components/Account/MyProfile";
 import { ToastContainer } from "react-toastify";
 import MyOrders from "./components/Cart/MyOrders";
 import ProductDescription from "./components/Products/ProductDescription";
-import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Cart/Checkout";
+import CartPage from "./pages/Cart/CartPage";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/new-products" element={<NewProducts />} />
           <Route path="/sign-up" element={<UserSignUp />} />
           <Route path="/product/:itemID" element={<ProductDescription />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/my-profile" element={<MyProfile />} />
           <Route path="/promotions" element={<Promotions />} />
